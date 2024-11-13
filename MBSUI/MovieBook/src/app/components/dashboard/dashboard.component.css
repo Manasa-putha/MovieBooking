@@ -1,0 +1,22 @@
+.dashboard-container {
+    padding: 16px;
+    color: rgb(100, 10, 189);
+  }
+  
+  mat-card {
+    margin-bottom: 16px;
+    color:darkmagenta;
+  }
+  
+  mat-grid-tile {
+    cursor: pointer;
+    color: navy;
+  }
+  
+.accent {
+  background: #b114ab; /* Custom color */
+  color: white; /* Text color */
+}
+.cols{
+  background-color: darkcyan;
+}

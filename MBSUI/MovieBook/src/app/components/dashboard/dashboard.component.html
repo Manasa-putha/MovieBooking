@@ -1,0 +1,130 @@
+<mat-toolbar class="accent">
+    <span>Movie Theatre Dashboard</span>
+  </mat-toolbar>
+  
+  <div class="dashboard-container">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startPicker" [(ngModel)]="selectedDate" (dateChange)="getMoviesByDate()">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" [(ngModel)]="selectedDate" (dateChange)="getMoviesByDate()">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field> -->
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="onDateChange()">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="onDateChange()">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-card *ngIf="movies.length > 0">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Movies</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-grid-list cols="4" rowHeight="350px" >
+          <mat-grid-tile *ngFor="let movie of movies">
+            <mat-card>
+              <img mat-card-image [src]="movie.ImageUrl || '../assets/images/movie.jpg'" alt="Movie Poster">
+              <mat-card-header>
+                <mat-card-title>{{ movie.movieName }}</mat-card-title>
+                <mat-card-subtitle>{{ movie.genre }} - {{ movie.director }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ movie.description }}</p>
+                <button mat-raised-button color="primary" (click)="selectMovie(movie)">Select Showtime</button>
+              </mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
+    </mat-card>
+    <mat-card *ngIf="movies.length === 0">
+      <mat-card-header>
+        <mat-card-title>No Movies Available</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Please select another date, current date movies are not available.</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="selectedMovie">
+      <mat-card-header>
+        <mat-card-title>Select Showtime  {{ selectedMovie.movieName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Showtime</mat-label>
+          <mat-select [(ngModel)]="selectedShowtime" >
+            <mat-option *ngFor="let show of availableShows" [value]="show">
+              {{ show.showTimings }}  - {{ show.no_of_seats }} seats available
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Screen Number</mat-label>
+          <mat-select [(ngModel)]="selectedScreen">
+            <mat-option *ngFor="let screen of  availableShows" [value]="screen">
+              {{ screen.screen_Number}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Number of Seats</mat-label> 
+          <input matInput type="number" [(ngModel)]="numberOfSeats" min="1" max="10" (ngModelChange)="calculateTotalAmount()">
+        </mat-form-field>
+  
+        <p>Total Tickets Amount: {{ totalAmount | currency }}</p>
+  
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Number of Seats</mat-label>
+          <input matInput type="number" [(ngModel)]="numberOfSeats" min="1" max="10">
+        </mat-form-field>
+   -->
+        <button mat-raised-button color="primary"(click)="bookTicket()">Book Ticket</button>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="ticketId">
+      <mat-card-header>
+        <mat-card-title>Booking Confirmation</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Your ticket ID is: {{ ticketId }}</p>
+        <p>Start Date: {{startDate}}</p>
+        <p>End Date: {{endDate}}</p>
+        <p>Your movieName is: {{ movieName }}</p>
+        <p>Your screenNumber is: {{ screenNumber }}</p>
+        <p>Your showTime is: {{ showTimings }}</p>
+        <p>Number of Seats: {{ numberOfSeats }}</p>
+      
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

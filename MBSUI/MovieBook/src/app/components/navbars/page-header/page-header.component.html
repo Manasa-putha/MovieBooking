@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <span>Movie Booking System</span>
+    <span class="spacer"></span>
+    <div class="user-info" *ngIf="loggedIn">
+        <div class="name">Hi welcome 
+            <mat-icon class="icon">account_circle</mat-icon>
+            <span>{{ name }}</span>
+         
+        </div>
+        <button mat-raised-button color="accent" routerLink="/profile">Profile</button>
+        <button mat-raised-button color="warn" (click)="logout()">Log Out</button>       
+    </div>
+    <button mat-raised-button color="accent" routerLink="/login" *ngIf="!loggedIn">Login</button>
+  
+</mat-toolbar>

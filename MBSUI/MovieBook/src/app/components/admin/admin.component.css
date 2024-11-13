@@ -1,0 +1,60 @@
+
+.admin-container {
+    padding: 20px;
+  }
+  
+  .movies-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .movie-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+  }
+  
+  .show-form {
+    margin-bottom: 20px;
+  }
+  /* admin.component.css */
+.admin-container {
+    padding: 20px;
+  }
+  
+  .movies-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .movie-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+  }
+  
+  .show-form {
+    margin-bottom: 20px;
+  }
+  .color{
+    color: rgb(22, 36, 228);
+    /* background-color: chartreuse; */
+  }

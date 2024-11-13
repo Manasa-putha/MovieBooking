@@ -1,0 +1,19 @@
+<h2>All Booked Tickets</h2>
+<div *ngIf="tickets.length > 0">
+  <div *ngFor="let ticket of tickets">
+    <mat-card class="ticket-card">
+      <mat-card-header>
+        <mat-card-title>{{ ticket.movieName }}</mat-card-title>
+        <mat-card-subtitle>Screen Number: {{ ticket.screenNumber }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Show Time: {{ ticket.showTime }}</p>
+        <p>Ticket ID: {{ ticket.ticketId }}</p>
+        <p>User ID: {{ ticket.userId }}</p> 
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="tickets.length === 0">
+  <p>No booked movies found.</p>
+</div>
